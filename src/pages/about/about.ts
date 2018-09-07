@@ -2,6 +2,11 @@ import { Component, Pipe } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import 'rxjs/add/operator/map';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/observable/interval'
+
+
 @Component({
   
   selector: 'page-about',
@@ -15,6 +20,10 @@ export class AboutPage {
   currentSong: object;
   isSongPlaying: boolean;
   songRange: number = 0;
+  timerVar;
+  timeVal;
+  _duration: number = 10;
+  timer: number;
   constructor(public navCtrl: NavController, private http: Http) {
   }
 
@@ -44,13 +53,32 @@ export class AboutPage {
     playSong(choice){
       this.currentSong = choice;
       this.isSongPlaying = true;
+      this.startTimer(this._duration);
     }
 
     TooglePlay(){
       this.isSongPlaying = !this.isSongPlaying;
+      if(this.isSongPlaying){
+        this.startTimer(this.timer);
+      }else{
+        this.timerVar.unsubscribe();
+      }
     }
 
     changeRange(event){
       console.log(this.songRange);
     }
+
+    startTimer(duration) {
+      this.timerVar = Observable.interval(1000) // milliseconds
+        .subscribe(x => {
+          this.timer = duration - x;
+          if (this.timer < 0) {
+            this.timerVar.unsubscribe();
+          } else {
+            console.log(this.timer);
+          }
+        })
+  }
+
 }
