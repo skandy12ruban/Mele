@@ -1,11 +1,56 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      My music
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+  
+<ion-searchbar
+  [(ngModel)]="choice"
+  (ionInput) = "showSongs($event)"
+  [showCancelButton]="shouldShowCancel"
+  (ionCancel)="onCancel($event)"> 
+</ion-searchbar> 
+   <button ion-item *ngFor='let song of songDisplay' (click)='playSong(song)'>
+     {{song.artist}}
+   </button>
+  </ion-list>
+  <ion-card *ngIf='currentSong'>
+    <ion-card-content>
+      <ion-item>
+          <ion-range [(ngModel)]="songRange" color="danger" pin="false" min="100" max="100" (ionChange)='changeRange($event)' ></ion-range>
+      </ion-item>
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img src="{{currentSong.img_url}}">
+              </ion-thumbnail>
+              <ion-buttons align='center'>
+                  <button ion-button color='dark' small >
+                    <ion-icon name='skip-backward'></ion-icon>
+                  </button>
+                  <button ion-button color='dark' small>
+                      <ion-icon name='rewind'></ion-icon>
+                    </button>
+                  
+                  <button ion-button color='dark'  (click)='TooglePlay()' small>
+                      <ion-icon [name]='isSongPlaying ? "pause" : "play"'></ion-icon>
+                    </button>
+                    <button ion-button color='dark'  small>
+                        <ion-icon name='fastforward'></ion-icon>
+                      </button>
+                    
+                    <button ion-button color='dark' small >
+                        <ion-icon name='skip-forward'></ion-icon>
+                      </button>
+                </ion-buttons>
+              <p align='center' class='songdetails'>{{currentSong.title}}, {{currentSong.artist}} , {{currentSong.year}}
+              </p>
+              
+            </ion-item>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
