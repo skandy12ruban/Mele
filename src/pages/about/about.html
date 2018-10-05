@@ -8,15 +8,16 @@
 
 <ion-content>
   <ion-list>
-  
+<!--   
 <ion-searchbar
   [(ngModel)]="choice"
   (ionInput) = "showSongs($event)"
   [showCancelButton]="shouldShowCancel"
   (ionCancel)="onCancel($event)"> 
-</ion-searchbar> 
-   <button ion-item *ngFor='let song of songDisplay' (click)='playSong(song)'>
-     {{song.artist}}
+</ion-searchbar>  -->
+   
+  <button ion-item *ngFor='let item of list' (click)='playSong(song)'>
+      {{item.title}}
    </button>
   </ion-list>
   <ion-card *ngIf='currentSong'>
