@@ -1,0 +1,7 @@
+{
+  "name": "mele",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
