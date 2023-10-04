@@ -16,7 +16,7 @@
 @import "@ionic/angular/css/normalize.css";
 @import "@ionic/angular/css/structure.css";
 @import "@ionic/angular/css/typography.css";
-@import '@ionic/angular/css/display.css';
+@import "@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "@ionic/angular/css/padding.css";
@@ -24,3 +24,34 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+@import "/src/theme/variables.scss";
+
+ion-card {
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.1px);
+  -webkit-backdrop-filter: blur(8.1px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+ion-tabs {
+  ion-tab-button {
+    --color-selected: var(--primary) !important;
+    font-weight: bold;
+  }
+}
+
+.bg-primary {
+  background-color: var(--primary) !important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+
+.btn-link{
+  vertical-align: baseline;
+  text-decoration: none;
+}

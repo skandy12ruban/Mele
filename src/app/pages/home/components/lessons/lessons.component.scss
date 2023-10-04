@@ -1,0 +1,16 @@
+@import "/src/theme/variables.scss";
+
+.container {
+  background: var(--primary);
+  background: linear-gradient(
+    180deg,
+    var(--primary) 0%,
+    rgba(236, 240, 241, 0) 100%
+  );
+  ion-grid{
+    height: 100vh;
+    overflow-y: scroll;
+  }
+}
+
+

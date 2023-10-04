@@ -12,4 +12,8 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
+  ionTabsDidChange(event:any){
+    console.log(event)
+  }
+
 }
